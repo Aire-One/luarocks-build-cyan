@@ -21,10 +21,12 @@ local function build(rockspec, build_dir)
       local src = dir.path(build_dir, file)
       local dst = dir.path(luadir, file)
 
-      fs.make_dir(dir.dir_name(dst))
-      local ok, err = fs.copy(src, dst)
-      if not ok then
-         return nil, "Failed installing " .. src .. " in " .. dst .. ": " .. err
+      if not fs.is_dir(src) then
+         fs.make_dir(dir.dir_name(dst))
+         local ok, err = fs.copy(src, dst)
+         if not ok then
+            return nil, "Failed installing " .. src .. " in " .. dst .. ": " .. err
+         end
       end
    end
 
