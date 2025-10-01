@@ -1,0 +1,31 @@
+{
+  "name": "luarocks-build-cyan",
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "features": {
+    "ghcr.io/aire-one/devcontainer-features/lua:latest": {},
+    "ghcr.io/aire-one/devcontainer-features/luarocks:latest": {}
+  },
+  "postCreateCommand": "luarocks install --local --only-deps luarocks-build-cyan-dev-1.rockspec",
+  // This is the result of `luarocks path` command. It adds the local luarocks path to the environment variables.
+  "remoteEnv": {
+    "LUA_PATH": "/usr/local/share/lua/5.4/?.lua;/usr/local/share/lua/5.4/?/init.lua;/usr/local/lib/lua/5.4/?.lua;/usr/local/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua;/home/vscode/.luarocks/share/lua/5.4/?.lua;/home/vscode/.luarocks/share/lua/5.4/?/init.lua",
+    "LUA_CPATH": "/usr/local/lib/lua/5.4/?.so;/usr/local/lib/lua/5.4/loadall.so;./?.so;/home/vscode/.luarocks/lib/lua/5.4/?.so",
+    "PATH": "/home/vscode/.luarocks/bin:${containerEnv:PATH}"
+  },
+  // Make podman work
+  "runArgs": [
+    "--userns=keep-id"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker-cspell-bundled-dictionaries",
+        "EditorConfig.EditorConfig",
+        "sumneko.lua@3.14.0", // pinned version since later versions need an updated glibc
+        "pdesaulniers.vscode-teal",
+        "dnut.rewrap-revived",
+        "DavidAnson.vscode-markdownlint"
+      ]
+    }
+  }
+}

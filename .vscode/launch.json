@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "type": "lua-local",
+      "request": "launch",
+      "name": "Debug Custom Executable",
+      "program": {
+        "command": "./test.sh"
+      }
+    }
+  ]
+}

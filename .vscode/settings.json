@@ -1,0 +1,16 @@
+{
+  "Lua.runtime.path": [
+    "?.lua",
+    "?/init.lua",
+  ],
+  "Lua.runtime.pathStrict": true,
+  "Lua.workspace.library": [
+    "/usr/local/share/lua/5.4",
+    "/usr/local/lib/lua/5.4",
+    "/home/vscode/.luarocks/share/lua/5.4",
+    "/home/vscode/.luarocks/lib/lua/5.4",
+  ],
+  "files.associations": {
+    "*.rockspec": "lua",
+  }
+}
